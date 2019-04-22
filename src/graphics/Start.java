@@ -51,7 +51,7 @@ public class Start extends Application {
 		Canvas pointCanvas = new Canvas(100,100);
 		gc = canvas.getGraphicsContext2D();
 		pointGc = pointCanvas.getGraphicsContext2D();
-		clear();
+		//clear();
 		drawPoint();
 		img.setLayoutX(bird.getX());
 		img.setLayoutY(bird.getY());
@@ -157,10 +157,12 @@ public class Start extends Application {
 		pointGc.setFill(Color.WHITE);
 		pointGc.setFont(new Font("Arial bold", 68));
 		pointGc.fillText(Integer.toString(point), 0, 70);
+		pointGc.setStroke(Color.RED);
+		pointGc.strokeText(Integer.toString(point), 0, 70);
 	}
 	
 	private boolean checkCollision() {
-		if(bird.getX() >= allPane[0].getLayoutX() && bird.getX() <= allPane[0].getLayoutX() + 100) {
+		if(bird.getX() >= allPane[0].getLayoutX() - 50 && bird.getX() <= allPane[0].getLayoutX() + 100) {
 			if(bird.getY() <= allPane[0].getLayoutY() + 680 || bird.getY() >= allPane[0].getLayoutY() + 800) {
 				//System.out.println("HIT");
 				started = false;
