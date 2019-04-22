@@ -120,6 +120,7 @@ public class Start extends Application {
 									drawPoint();
 									System.out.println(point);
 								}
+								checkCollision();
 					        }
 					    }, 0, 16);
 			}
@@ -156,6 +157,26 @@ public class Start extends Application {
 		pointGc.setFill(Color.WHITE);
 		pointGc.setFont(new Font("Arial bold", 68));
 		pointGc.fillText(Integer.toString(point), 0, 70);
+	}
+	
+	private boolean checkCollision() {
+		if(bird.getX() >= allPane[0].getLayoutX() && bird.getX() <= allPane[0].getLayoutX() + 100) {
+			if(bird.getY() <= allPane[0].getLayoutY() + 680 || bird.getY() >= allPane[0].getLayoutY() + 800) {
+				//System.out.println("HIT");
+				started = false;
+				finish = true;
+				bird.setY(300);
+				img.setLayoutY(bird.getY());
+				img.setRotate(0);
+				timer.cancel();
+				point = 0;
+				drawPoint();
+				allPane[0].setLayoutX(800);
+				allPane[1].setLayoutX(1200);
+				allPane[2].setLayoutX(1600);
+			}
+		}
+		return false;
 	}
 
 }
